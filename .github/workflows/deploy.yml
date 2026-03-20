@@ -1,0 +1,50 @@
+name: 🚀 Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # Se déclenche à chaque push sur la branche main
+
+  # Permet aussi de lancer manuellement depuis l'onglet Actions sur GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Nécessaire pour gh-pages qui pousse sur la branche gh-pages
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code source
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configurer Node.js
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Installer les dépendances
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # 4. Builder le projet Vite
+      - name: 🏗️ Build project
+        run: npm run build
+        env:
+          # Si vous avez des variables d'environnement, ajoutez-les ici
+          # en les définissant dans Settings > Secrets and variables > Actions
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      # 5. Déployer sur GitHub Pages (branche gh-pages)
+      - name: 🌐 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          commit_message: '🚀 Auto-deploy from ${{ github.sha }}'
