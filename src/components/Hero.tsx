@@ -28,7 +28,7 @@ export const Hero = () => {
   return (
     <section id="home" className="min-h-[calc(100vh-5rem)] flex items-center justify-center pb-10 px-4">
       <div className="container mx-auto max-w-5xl flex flex-col-reverse md:flex-row items-center gap-12">
-        <motion.div 
+        <motion.div
           className="flex-1 text-center md:text-left"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,14 +46,14 @@ export const Hero = () => {
               & Data Scientist
             </span>
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0">
-            Je transforme des données complexes en applications web performantes et intuitives. 
+          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 text-justify">
+            Je transforme des données complexes en applications web performantes et intuitives.
             Passionné par l'intersection entre l'ingénierie logicielle et l'intelligence artificielle.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-10">
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={(e) => handleNavClick('contact', e)}
               className="px-8 py-3 rounded-full bg-amber-600 text-white font-medium hover:bg-amber-700 transition-colors shadow-lg shadow-amber-200 dark:shadow-amber-900/20 w-full sm:w-auto text-center"
             >
@@ -74,7 +74,7 @@ export const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="flex-1 flex justify-center md:justify-end"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -82,9 +82,9 @@ export const Hero = () => {
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             <div className="absolute inset-0 bg-gradient-to-tr from-amber-600 to-orange-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-            <img 
-              src={profileImg} 
-              alt="Profile" 
+            <img
+              src={profileImg}
+              alt="Profile"
               className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-xl"
             />
           </div>
