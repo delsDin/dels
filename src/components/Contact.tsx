@@ -61,13 +61,13 @@ export const Contact = () => {
               </div>
 
               <div className="space-y-6">
-                <a href="mailto:delsmarceldinla@gmail.com" className="flex items-center gap-4 group hover:opacity-80 transition-opacity">
+                <a href="mailto:delsdenla.dev@gmail.com" className="flex items-center gap-4 group hover:opacity-80 transition-opacity">
                   <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg group-hover:bg-amber-200 dark:group-hover:bg-amber-900/50 transition-colors">
                     <Mail size={24} />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Email</p>
-                    <p className="text-lg font-semibold text-slate-900 dark:text-white">delsmarceldinla@gmail.com</p>
+                    <p className="text-lg font-semibold text-slate-900 dark:text-white">delsdenla.dev@gmail.com</p>
                   </div>
                 </a>
 
