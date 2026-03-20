@@ -46,7 +46,7 @@ export const Header = () => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+      <div translate="no" className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <a 
           href="#home" 
           onClick={(e) => handleNavClick('home', e)}
