@@ -36,9 +36,10 @@ jobs:
       - name: 🏗️ Build project
         run: npm run build
         env:
-          # Si vous avez des variables d'environnement, ajoutez-les ici
-          # en les définissant dans Settings > Secrets and variables > Actions
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
 
       # 5. Déployer sur GitHub Pages (branche gh-pages)
       - name: 🌐 Deploy to GitHub Pages
