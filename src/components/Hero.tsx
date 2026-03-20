@@ -86,6 +86,10 @@ export const Hero = () => {
               src={profileImg}
               alt="Profile"
               className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-xl"
+              draggable={false}
+              onDragStart={(e) => e.preventDefault()}
+              onContextMenu={(e) => e.preventDefault()}
+              style={{ userSelect: 'none', WebkitUserSelect: 'none', pointerEvents: 'none' }}
             />
           </div>
         </motion.div>
