@@ -40,7 +40,7 @@ export const Hero = () => {
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-2 whitespace-nowrap">
             Dels Dinla.
           </h1>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-700 dark:text-slate-300 mb-6 leading-tight">
+          <h2 translate="no" className="text-3xl md:text-5xl font-bold text-slate-700 dark:text-slate-300 mb-6 leading-tight">
             Dev <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-500">
               & Data Scientist
