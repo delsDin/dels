@@ -15,16 +15,22 @@ export const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     try {
-      const phoneNumber = "2290154972991"; // Format international sans le '+'
-      const text = `Bonjour, je suis ${data.name} (${data.email}).\n\nSujet : ${data.subject}\n\nMessage :\n${data.message}`;
-      const encodedText = encodeURIComponent(text);
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
-      
-      window.open(whatsappUrl, '_blank');
-      
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          reply_to: data.email,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
       setSubmitStatus('success');
       reset();
     } catch (error) {
+      console.error('EmailJS error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -64,7 +70,7 @@ export const Contact = () => {
                     <p className="text-lg font-semibold text-slate-900 dark:text-white">delsmarceldinla@gmail.com</p>
                   </div>
                 </a>
-                
+
                 <a href="tel:+2290154972991" className="flex items-center gap-4 group hover:opacity-80 transition-opacity">
                   <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg group-hover:bg-amber-200 dark:group-hover:bg-amber-900/50 transition-colors">
                     <Phone size={24} />
@@ -74,7 +80,7 @@ export const Contact = () => {
                     <p className="text-lg font-semibold text-slate-900 dark:text-white">+229 01 54 97 29 91</p>
                   </div>
                 </a>
-                
+
                 <a href="https://maps.google.com/?q=Abomey-Calavi" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group hover:opacity-80 transition-opacity">
                   <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg group-hover:bg-amber-200 dark:group-hover:bg-amber-900/50 transition-colors">
                     <MapPin size={24} />
@@ -101,14 +107,14 @@ export const Contact = () => {
                     />
                     {errors.name && <span className="text-red-500 text-sm mt-1 block">{errors.name.message as string}</span>}
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
                     <input
                       id="email"
                       type="email"
                       placeholder="jean@example.com"
-                      {...register('email', { 
+                      {...register('email', {
                         required: 'L\'email est requis',
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -165,7 +171,7 @@ export const Contact = () => {
                     Votre message a été envoyé avec succès !
                   </div>
                 )}
-                
+
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg text-center font-medium">
                     Une erreur est survenue. Veuillez réessayer.
